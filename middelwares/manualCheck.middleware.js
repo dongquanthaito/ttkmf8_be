@@ -157,17 +157,20 @@ module.exports = {
                     }
                 }else{
                     return{
-                        valid: true,
+                        statusCode: 200,
+                        valid: true
                     }
                 }
             }else{
             return{
-                valid: true,
+                statusCode: 200,
+                valid: true
             }
             }
         }else{
             return{
-                valid: true,
+                statusCode: 200,
+                valid: true
             }
         }
         }).catch(function (error) {

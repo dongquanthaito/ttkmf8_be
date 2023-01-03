@@ -47,7 +47,7 @@ module.exports = {
         } else if(checkRemark.valid == true){
           console.log('Check vé')
           if(result.valid.valid.status != false) {
-            if(checkCashSummary.valid == true && checkPlayerVipId.valid == true && checkRemark.valid == true && checkGameProvider.valid == true && checkVeGop.valid == true) {
+            if(checkCashSummary.valid == true && checkPlayerVipId.valid == true && checkRemark.valid == true && checkGameProvider.valid == true && checkVeGop.valid == true && result.valid == true) {
               console.log('Vé hợp lệ')
               res.json({
                 statusCode: result.statusCode,
@@ -73,7 +73,7 @@ module.exports = {
               console.log(checkVeGop)
               console.log(checkGameProvider)
               res.json({
-                statuscode: 503,
+                statusCode: 403,
                 valid: {
                   valid: {
                     status: false,
@@ -98,7 +98,7 @@ module.exports = {
           } else {
             console.log('Vé không hợp rule')
             res.json({
-              statuscode: 503,
+              statusCode: 403,
               valid: {
                 valid: {
                   status: false,
