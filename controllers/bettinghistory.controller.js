@@ -36,7 +36,7 @@ module.exports = {
         if(checkRemark.valid.status == false) {
           console.log("Đã nhận khuyến mãi")
           res.json({
-            statusCode: 503,
+            statusCode: 403,
             valid: {
               valid: {
                 status: false,
