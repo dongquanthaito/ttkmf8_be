@@ -26,7 +26,19 @@ module.exports = {
         let checkRemark = await manualCheck.remarkCheck(response.data.data[0].playerid, authorization, date[rule.validateTimeStart], date[rule.validateTimeEnd], rule.remark)
         let checkGameProvider = manualCheck.avoid(response, rule)
         let checkVeGop = await manualCheck.vegop(rule, response, date[rule.startTime], date[rule.endTime], authorization)
+        console.log(checkCashSummary)
+        console.log(checkPlayerVipId)
+        console.log(checkRemark)
+        console.log(checkVeGop)
+        console.log(checkGameProvider)
+
         console.log(result)
+        
+        console.log(checkRemark.valid.status)
+        console.log(checkRemark.valid.status)
+        console.log(checkRemark.valid.status)
+        console.log(checkRemark.valid.status)
+
         if(checkRemark.valid.status == false) {
           console.log("Đã nhận khuyến mãi")
           res.json({
@@ -34,22 +46,9 @@ module.exports = {
             valid: {
               valid: {
                 status: false,
-                mess: "Quý khách đã nhận khuyến mãi."
+                mess: "Quý khách đã nhận khuyến mãi này."
               }
-            },
-            promoName: result.promoName,
-            promotionTile: result.promotionTile,
-            playerid: result.playerid,
-            score: result.score,
-            bonus: result.bonus,
-            turnover: result.turnover,
-            checkCashSummary: checkCashSummary,
-            checkPlayerVipId: checkPlayerVipId,
-            checkRemark: checkRemark,
-            checkVeGop: checkVeGop,
-            checkGameProvider: checkGameProvider,
-            validateTimeStart: date[rule.validateTimeStart],
-            validateTimeEnd: date[rule.validateTimeEnd]
+            }
           })
         } else if(checkRemark.valid == true){
           console.log('Check vé')
