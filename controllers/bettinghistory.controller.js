@@ -32,12 +32,13 @@ module.exports = {
         console.log(checkVeGop)
         console.log(checkGameProvider)
 
+        console.log("checkRemark")
+        console.log("checkRemark")
+        console.log("checkRemark")
+        console.log("checkRemark")
+        
         console.log(result)
 
-        console.log(checkRemark)
-        console.log(checkRemark)
-        console.log(checkRemark)
-        console.log(checkRemark)
 
         if(checkRemark.valid.status == false) {
           console.log("Đã nhận khuyến mãi")
