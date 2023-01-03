@@ -33,7 +33,6 @@ module.exports = {
         console.log(checkGameProvider)
 
         console.log(result)
-        console.log(checkRemark.valid)
         if(checkRemark.valid.status == false) {
           console.log("Đã nhận khuyến mãi")
           res.json({
