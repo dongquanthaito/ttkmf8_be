@@ -23,7 +23,7 @@ module.exports = {
         console.log("checkRemark")
         console.log("checkRemark")
         console.log("checkRemark")
-        console.log("--------------------------START--------------------------")
+        console.log("--------------------------0START0--------------------------")
         let result = await promotionType[rule.promotiontype](response, rule)
         let checkCashSummary = await manualCheck.cashsummary(response.data.data[0].playerid, authorization)
         let checkPlayerVipId = await manualCheck.playerVipId(response.data.data[0].playerid, authorization)
