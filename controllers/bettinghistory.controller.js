@@ -33,11 +33,11 @@ module.exports = {
         console.log(checkGameProvider)
 
         console.log(result)
-        
-        console.log(checkRemark.valid.status)
-        console.log(checkRemark.valid.status)
-        console.log(checkRemark.valid.status)
-        console.log(checkRemark.valid.status)
+
+        console.log(checkRemark)
+        console.log(checkRemark)
+        console.log(checkRemark)
+        console.log(checkRemark)
 
         if(checkRemark.valid.status == false) {
           console.log("Đã nhận khuyến mãi")
