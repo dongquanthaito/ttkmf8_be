@@ -19,6 +19,10 @@ module.exports = {
       };
       axios(config)
       .then(async function (response) {
+        console.log("checkRemark")
+        console.log("checkRemark")
+        console.log("checkRemark")
+        console.log("checkRemark")
         console.log("--------------------------START--------------------------")
         let result = await promotionType[rule.promotiontype](response, rule)
         let checkCashSummary = await manualCheck.cashsummary(response.data.data[0].playerid, authorization)
@@ -32,11 +36,8 @@ module.exports = {
         console.log(checkVeGop)
         console.log(checkGameProvider)
 
-        console.log("checkRemark")
-        console.log("checkRemark")
-        console.log("checkRemark")
-        console.log("checkRemark")
-        
+
+
         console.log(result)
 
 
