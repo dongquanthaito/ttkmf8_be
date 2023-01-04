@@ -17,11 +17,11 @@ module.exports = {
           'Authorization': authorization,
         }
       };
-      console.log(config.url)
+      
       axios(config)
       .then(async function (response) {
         console.log("--------------------------START--------------------------")
-        console.log("Rule product: " +rule.producttype)
+        console.log(config.url)
         let result = await promotionType[rule.promotiontype](response, rule)
         console.log(result)
         
@@ -63,7 +63,7 @@ module.exports = {
             valid: false,
             mess: messShow
           })
-          console.log("--------------------------FINISHED--------------------------")
+          console.log("-------------------------FINISHED-------------------------")
         } else {
           console.log('Vé hợp lệ')
           res.json({
@@ -80,7 +80,7 @@ module.exports = {
             validateTimeStart: date[rule.validateTimeStart],
             validateTimeEnd: date[rule.validateTimeEnd]
           })
-          console.log("--------------------------FINISHED--------------------------")
+          console.log("-------------------------FINISHED-------------------------")
         }
       }).catch(function (error) {
         console.log('Lỗi Axios')
@@ -96,7 +96,7 @@ module.exports = {
           validateTimeEnd: date[rule.validateTimeEnd],
           error_catch: error
         });
-        console.log("--------------------------FINISHED--------------------------")
+        console.log("-------------------------FINISHED-------------------------")
       });
     }
 }
