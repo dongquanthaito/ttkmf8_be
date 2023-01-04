@@ -49,10 +49,8 @@ module.exports = {
           })
         } else if(checkRemark.valid == true){
           console.log('Check vé')
-          console.log(result.valid)
-          console.log(result.valid.valid.status)
-          if(result.valid.valid.status != false) {
-            if(checkCashSummary.valid == true && checkPlayerVipId.valid == true && checkRemark.valid == true && checkGameProvider.valid == true && checkVeGop.valid == true && result.valid == true) {
+          if(result.valid.status != false) {
+            if(checkCashSummary.valid == true && checkPlayerVipId.valid == true && checkRemark.valid == true && checkGameProvider.valid == true && checkVeGop.valid == true) {
               console.log('Vé hợp lệ')
               res.json({
                 statusCode: result.statusCode,
@@ -71,20 +69,10 @@ module.exports = {
               })
             } else {
               console.log('Vé không hợp lệ')
-              
-              console.log(checkCashSummary)
-              console.log(checkPlayerVipId)
-              console.log(checkRemark)
-              console.log(checkVeGop)
-              console.log(checkGameProvider)
               res.json({
                 statusCode: 403,
-                valid: {
-                  valid: {
-                    status: false,
-                    mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi."
-                  }
-                },
+                valid: false,
+                mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi.",
                 promoName: result.promoName,
                 promotionTile: result.promotionTile,
                 playerid: result.playerid,
@@ -104,12 +92,8 @@ module.exports = {
             console.log('Vé không hợp rule')
             res.json({
               statusCode: 403,
-              valid: {
-                valid: {
-                  status: false,
-                  mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi."
-                }
-              },
+              valid: false,
+              mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi.",
               promoName: result.promoName,
               promotionTile: result.promotionTile,
               playerid: result.playerid,
