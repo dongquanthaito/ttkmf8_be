@@ -131,7 +131,7 @@ module.exports = {
         return axios(config)
         .then( async(response)=> {
             console.log (config.url)
-
+        
         if(response.data.total>1){
             if(response.data.summary.betamount==betamount){
                 console.log("betamount " + betamount)

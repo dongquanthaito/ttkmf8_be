@@ -21,6 +21,7 @@ module.exports = {
       axios(config)
       .then(async function (response) {
         console.log("--------------------------START--------------------------")
+        console.log("Rule product: " +rule.producttype)
         let result = await promotionType[rule.promotiontype](response, rule)
         console.log(result)
         
