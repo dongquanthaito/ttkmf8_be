@@ -40,12 +40,8 @@ module.exports = {
           console.log("Đã nhận khuyến mãi")
           res.json({
             statusCode: 403,
-            valid: {
-              valid: {
-                status: false,
-                mess: "Quý khách đã nhận khuyến mãi này."
-              }
-            }
+            valid: false,
+            mess: "Quý khách đã nhận khuyến mãi này."
           })
         } else if(checkRemark.valid == true){
           console.log('Check vé')
@@ -113,12 +109,8 @@ module.exports = {
       }).catch(function (error) {
         console.log('Lỗi Axios')
         res.json({
-          valid: {
-            valid: {
-              status: false,
-              mess: "Không tìm thấy tài khoản hoặc vé cược."
-            }
-          },
+          valid: false,
+          mess: "Không tìm thấy tài khoản hoặc vé cược.",
           promoName: rule.promoName,
           promotionTile: rule.promotionTile,
           score: 0,
