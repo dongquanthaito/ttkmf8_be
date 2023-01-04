@@ -17,6 +17,7 @@ module.exports = {
           'Authorization': authorization,
         }
       };
+      console.log(config.url)
       axios(config)
       .then(async function (response) {
         console.log("--------------------------START--------------------------")
@@ -28,7 +29,7 @@ module.exports = {
         let checkRemark = await manualCheck.remarkCheck(response.data.data[0].playerid, authorization, date[rule.validateTimeStart], date[rule.validateTimeEnd], rule.remark)
         let checkGameProvider = manualCheck.avoid(response, rule)
         let checkVeGop = await manualCheck.vegop(rule, response, date[rule.startTime], date[rule.endTime], authorization)
-        
+
         console.log(checkCashSummary)
         console.log(checkPlayerVipId)
         console.log(checkRemark)
@@ -61,6 +62,7 @@ module.exports = {
             valid: false,
             mess: messShow
           })
+          console.log("--------------------------FINISHED--------------------------")
         } else {
           console.log('Vé hợp lệ')
           res.json({
@@ -77,6 +79,7 @@ module.exports = {
             validateTimeStart: date[rule.validateTimeStart],
             validateTimeEnd: date[rule.validateTimeEnd]
           })
+          console.log("--------------------------FINISHED--------------------------")
         }
       }).catch(function (error) {
         console.log('Lỗi Axios')
@@ -92,6 +95,7 @@ module.exports = {
           validateTimeEnd: date[rule.validateTimeEnd],
           error_catch: error
         });
+        console.log("--------------------------FINISHED--------------------------")
       });
     }
 }
