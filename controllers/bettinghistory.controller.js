@@ -19,12 +19,9 @@ module.exports = {
       };
       axios(config)
       .then(async function (response) {
-        console.log("checkRemark")
-        console.log("checkRemark")
-        console.log("checkRemark")
-        console.log("checkRemark")
-        console.log("--------------------------0START0--------------------------")
+        console.log("--------------------------START--------------------------")
         let result = await promotionType[rule.promotiontype](response, rule)
+        console.log(result)
         let checkCashSummary = await manualCheck.cashsummary(response.data.data[0].playerid, authorization)
         let checkPlayerVipId = await manualCheck.playerVipId(response.data.data[0].playerid, authorization)
         let checkRemark = await manualCheck.remarkCheck(response.data.data[0].playerid, authorization, date[rule.validateTimeStart], date[rule.validateTimeEnd], rule.remark)
@@ -36,9 +33,6 @@ module.exports = {
         console.log(checkVeGop)
         console.log(checkGameProvider)
 
-
-
-        console.log(result)
 
 
         if(checkRemark.valid.status == false) {
@@ -131,7 +125,7 @@ module.exports = {
           
         }
       }).catch(function (error) {
-        console.log('Lỗi fetch')
+        console.log('Lỗi Axios')
         res.json({
           valid: {
             valid: {
