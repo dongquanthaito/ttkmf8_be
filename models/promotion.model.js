@@ -49,12 +49,8 @@ module.exports = {
         console.log('promotion fail')
         return {
           statusCode: 503,
-          valid: {
-            valid: {
-              status: false,
-              mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi."
-            }
-          },
+          valid: false,
+          mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi.",
           promoName: promoName,
           playerid: playerid
         }
@@ -95,12 +91,8 @@ module.exports = {
           console.log('kmvcd không tính được')
           return {
             statusCode: 503,
-            valid: {
-              valid: {
-                status: false,
-                mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi."
-              }
-            },
+            valid: false,
+            mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi.",
             promoName: promoName,
             playerid: playerid
           }
