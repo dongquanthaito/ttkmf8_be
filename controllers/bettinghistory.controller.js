@@ -53,7 +53,6 @@ module.exports = {
             if(checkCashSummary.valid == true && checkPlayerVipId.valid == true && checkRemark.valid == true && checkGameProvider.valid == true && checkVeGop.valid == true) {
               console.log('Vé hợp lệ')
               res.json({
-                statusCode: result.statusCode,
                 valid: result.valid,
                 mess: result.mess,
                 promoName: result.promoName,
