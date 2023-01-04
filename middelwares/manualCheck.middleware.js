@@ -19,10 +19,7 @@ module.exports = {
             } else {
                 return {
                     statusCode: 403,
-                    valid: {
-                        status: false,
-                        mess: "Quý khách chưa có giao dịch - Chưa đủ điều kiện để nhận khuyến mãi này."
-                    }
+                    valid: false,                    
                 }
             }
         }).catch(function (error) {
@@ -49,10 +46,7 @@ module.exports = {
             } else {
                 return {
                     statusCode: 403,
-                    valid: {
-                        status: false,
-                        mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi này."
-                    }
+                    valid: false                   
                 }
             }
         }).catch(function (error) {
@@ -81,10 +75,7 @@ module.exports = {
             if(numRemark.includes(remark)){
                 return {
                     statusCode: 403,
-                    valid: {
-                        status: false,
-                        mess: "Quý khách đã nhận khuyến mãi này."
-                    }
+                    valid: false,
                 }
             }else{
                 return {
@@ -104,10 +95,7 @@ module.exports = {
         if(rule.avoidValue.includes(avoidMethodFunc)){
             return {
                 statusCode: 403,
-                valid: {
-                    status: false,
-                    mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi."
-                }
+                valid: false
             }
         }else{
             return {
@@ -150,10 +138,7 @@ module.exports = {
                 if(betamount>=50){
                     return{
                         statusCode: 403,
-                        valid: {
-                            status: false,
-                            mess: "Vé cược miễn phí đặt cược jackpot, các vé cược hủy bỏ, vé gộp , vô hiệu đều không được tham gia khuyến mãi này"
-                        }
+                        valid: false
                     }
                 }else{
                     return{

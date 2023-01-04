@@ -65,14 +65,14 @@ module.exports = {
             let bonusValue = ()=>{
               console.log ("Bonus: "+bonus[finalize[0].length-minLength]+" - Limit ne:"+limit[finalize[0].length-minLength])
               if((validBetHandling*bonus[finalize[0].length-minLength])<=limit[finalize[0].length-minLength]){
-                console.log("bonus ne")
+                console.log("Bonus kmvcd: ")
                 return validBetHandling*bonus[finalize[0].length-minLength]
               }else{
-                console.log("limit ne")
+                console.log("Limit kmvcd: ")
                 return limit[finalize[0].length-minLength]
               }
             }
-            console.log("turnover ne "+turnover)
+            console.log("Turnover kmvcd: "+turnover)
             return {
               valid: true,
               promoName: promoName,

@@ -28,83 +28,55 @@ module.exports = {
         let checkRemark = await manualCheck.remarkCheck(response.data.data[0].playerid, authorization, date[rule.validateTimeStart], date[rule.validateTimeEnd], rule.remark)
         let checkGameProvider = manualCheck.avoid(response, rule)
         let checkVeGop = await manualCheck.vegop(rule, response, date[rule.startTime], date[rule.endTime], authorization)
+        
         console.log(checkCashSummary)
         console.log(checkPlayerVipId)
         console.log(checkRemark)
         console.log(checkVeGop)
         console.log(checkGameProvider)
 
+        let messShow
 
+        if(checkCashSummary.valid == false) {
+          messShow="Quý khách chưa có giao dịch - Chưa đủ điều kiện để nhận khuyến mãi này."
+        } else if(checkPlayerVipId.valid == false) {
+          messShow="Quý khách chưa đủ điều kiện nhận khuyến mãi này."
+        } else if(checkRemark.valid == false) {
+          messShow="Quý khách đã nhận khuyến mãi này."
+        } else if(checkGameProvider.valid == false) {
+          messShow="Quý khách chưa đủ điều kiện nhận khuyến mãi này."
+        } else if(checkVeGop) {
+          messShow="Vé cược miễn phí đặt cược jackpot, các vé cược hủy bỏ, vé gộp , vô hiệu đều không được tham gia khuyến mãi này"
+        } else if(result.valid.status == false){
+          console.log("Vé không hợp rule")
+          messShow="Quý khách chưa đủ điều kiện nhận khuyến mãi này."
+        } else {
+          messShow="Quý khách chưa đủ điều kiện nhận khuyến mãi này."
+        }
 
-        if(checkRemark.valid.status == false) {
-          console.log("Đã nhận khuyến mãi")
+        if(checkCashSummary.valid == false || checkPlayerVipId.valid == false || checkRemark.valid == false || checkGameProvider.valid == false || checkVeGop.valid == false || result.valid.status == false) {
+          console.log("Vé không hợp lệ")
           res.json({
             statusCode: 403,
             valid: false,
-            mess: "Quý khách đã nhận khuyến mãi này."
+            mess: messShow
           })
-        } else if(checkRemark.valid == true){
-          console.log('Check vé')
-          if(result.valid.status != false) {
-            if(checkCashSummary.valid == true && checkPlayerVipId.valid == true && checkRemark.valid == true && checkGameProvider.valid == true && checkVeGop.valid == true) {
-              console.log('Vé hợp lệ')
-              res.json({
-                valid: result.valid,
-                mess: result.mess,
-                promoName: result.promoName,
-                promotionTile: result.promotionTile,
-                playerid: result.playerid,
-                score: result.score,
-                bonus: result.bonus,
-                turnover: result.turnover,
-                subject: result.subject,
-                content: result.content,
-                validateTimeStart: date[rule.validateTimeStart],
-                validateTimeEnd: date[rule.validateTimeEnd]
-              })
-            } else {
-              console.log('Vé không hợp lệ')
-              res.json({
-                statusCode: 403,
-                valid: false,
-                mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi.",
-                promoName: result.promoName,
-                promotionTile: result.promotionTile,
-                playerid: result.playerid,
-                score: result.score,
-                bonus: result.bonus,
-                turnover: result.turnover,
-                checkCashSummary: checkCashSummary,
-                checkPlayerVipId: checkPlayerVipId,
-                checkRemark: checkRemark,
-                checkVeGop: checkVeGop,
-                checkGameProvider: checkGameProvider,
-                validateTimeStart: date[rule.validateTimeStart],
-                validateTimeEnd: date[rule.validateTimeEnd]
-              });
-            }
-          } else {
-            console.log('Vé không hợp rule')
-            res.json({
-              statusCode: 403,
-              valid: false,
-              mess: "Quý khách chưa đủ điều kiện nhận khuyến mãi.",
-              promoName: result.promoName,
-              promotionTile: result.promotionTile,
-              playerid: result.playerid,
-              score: result.score,
-              bonus: result.bonus,
-              turnover: result.turnover,
-              checkCashSummary: checkCashSummary,
-              checkPlayerVipId: checkPlayerVipId,
-              checkRemark: checkRemark,
-              checkVeGop: checkVeGop,
-              checkGameProvider: checkGameProvider,
-              validateTimeStart: date[rule.validateTimeStart],
-              validateTimeEnd: date[rule.validateTimeEnd]
-            });
-          }
-          
+        } else {
+          console.log('Vé hợp lệ')
+          res.json({
+            valid: result.valid,
+            mess: result.mess,
+            promoName: result.promoName,
+            promotionTile: result.promotionTile,
+            playerid: result.playerid,
+            score: result.score,
+            bonus: result.bonus,
+            turnover: result.turnover,
+            subject: result.subject,
+            content: result.content,
+            validateTimeStart: date[rule.validateTimeStart],
+            validateTimeEnd: date[rule.validateTimeEnd]
+          })
         }
       }).catch(function (error) {
         console.log('Lỗi Axios')
