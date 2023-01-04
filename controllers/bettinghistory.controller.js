@@ -20,8 +20,9 @@ module.exports = {
       axios(config)
       .then(async function (response) {
         console.log("--------------------------START--------------------------")
-        console.log(response)
+
         let result = await promotionType[rule.promotiontype](response, rule)
+        console.log(result)
         
         let checkCashSummary = await manualCheck.cashsummary(response.data.data[0].playerid, authorization)
         let checkPlayerVipId = await manualCheck.playerVipId(response.data.data[0].playerid, authorization)
