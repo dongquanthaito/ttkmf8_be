@@ -20,7 +20,6 @@ module.exports = {
       axios(config)
       .then(async function (response) {
         console.log("--------------------------START--------------------------")
-        console.log(rule)
         let result = await promotionType[rule.promotiontype](response, rule)
         console.log(result)
         
@@ -50,6 +49,8 @@ module.exports = {
           })
         } else if(checkRemark.valid == true){
           console.log('Check vé')
+          console.log(result.valid)
+          console.log(result.valid.valid.status)
           if(result.valid.valid.status != false) {
             if(checkCashSummary.valid == true && checkPlayerVipId.valid == true && checkRemark.valid == true && checkGameProvider.valid == true && checkVeGop.valid == true && result.valid == true) {
               console.log('Vé hợp lệ')
