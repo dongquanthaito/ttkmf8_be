@@ -130,7 +130,7 @@ module.exports = {
         };
         return axios(config)
         .then( async(response)=> {
-            
+
         if(rule.promoName == "NH04") {
             return {
                 statusCode: 200,
@@ -140,7 +140,7 @@ module.exports = {
         } else if(response.data.total>1){
             if(response.data.summary.betamount==betamount){
                 console.log("betamount " + betamount)
-                if(betamount>=50){
+                if(betamount>50){
                     return{
                         statusCode: 403,
                         valid: false
